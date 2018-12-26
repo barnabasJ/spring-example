@@ -1,13 +1,13 @@
 buildscript {
-	ext {
-		springBootVersion = '2.1.1.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+  ext {
+    springBootVersion = '2.1.1.RELEASE'
+  }
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+  }
 }
 
 apply plugin: 'java'
@@ -20,16 +20,23 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
-	mavenCentral()
+  mavenCentral()
 }
 
 
 dependencies {
-	implementation(
+  compileOnly 'org.projectlombok:lombok:1.18.4'
+  implementation(
     'org.springframework.boot:spring-boot-starter',
     'org.springframework.boot:spring-boot-starter-data-jpa',
     'org.springframework.boot:spring-boot-starter-web',
-    'com.h2database:h2:1.4.196'
+    'org.springframework.boot:spring-boot-starter-security',
+    'org.springframework.boot:spring-boot-devtools',
+    'org.apache.commons:commons-lang3:3.8.1',
+    'com.h2database:h2:1.4.196',
   )
-	testImplementation('org.springframework.boot:spring-boot-starter-test')
+  testImplementation(
+    'org.springframework.boot:spring-boot-starter-test',
+    'org.springframework.security:spring-security-test:4.1.4.RELEASE',
+  )
 }
